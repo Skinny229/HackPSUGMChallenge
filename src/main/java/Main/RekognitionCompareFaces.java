@@ -16,7 +16,7 @@ public class RekognitionCompareFaces {
     static boolean worked = false;
     static List<Landmark> landmarkList;
 
-    public ComparedFace test() throws Exception{
+    public ComparedFace getFaceInStream() throws Exception{
         Float similarityThreshold = 50F;
         String sourceImage = "src/main/java/Resources/SourcePerson.png";
         String targetImage = "src/main/java/Resources/rcCarView.png";
