@@ -1,5 +1,6 @@
 package Main;
 
+<<<<<<< HEAD
 import StreamCapture.ImageCreator;
 
 import java.io.IOException;
@@ -27,4 +28,20 @@ public class RCCarMain {
         }
     }
 
+=======
+
+
+
+
+public class RCCarMain {
+    // Instantiates a client
+    public static void main(String[] args) throws Exception
+    {
+
+
+    }
+
+
+>>>>>>> googlevisionAPI
 }
+
