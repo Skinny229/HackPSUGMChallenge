@@ -21,7 +21,6 @@
     </build>
 
     <dependencies>
-<<<<<<< HEAD
         <dependency>
             <groupId>com.github.sarxos</groupId>
             <artifactId>webcam-capture</artifactId>
@@ -32,22 +31,12 @@
             <artifactId>webcam-capture-driver-ipcam</artifactId>
             <version>0.3.12</version>
         </dependency>
-    </dependencies>
-
-=======
-
-        <dependency>
-            <groupId>com.google.cloud</groupId>
-            <artifactId>google-cloud-vision</artifactId>
-            <version>1.40.0</version>
-        </dependency>
         <dependency>
             <groupId>com.amazonaws</groupId>
             <artifactId>aws-java-sdk-rekognition</artifactId>
             <version>1.11.423</version>
         </dependency>
-
     </dependencies>
->>>>>>> googlevisionAPI
+
 
 </project>

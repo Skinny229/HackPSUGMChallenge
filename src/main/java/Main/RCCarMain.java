@@ -1,19 +1,16 @@
 package Main;
 
-<<<<<<< HEAD
 import StreamCapture.ImageCreator;
-
-import java.io.IOException;
-import java.net.MalformedURLException;
 
 public class RCCarMain {
 
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws Exception {
         ImageCreator imgCreator = new ImageCreator();
         imgCreator.initCameraStream();
+        RekognitionCompareFaces aws = new RekognitionCompareFaces();
 
 
-        long waitParseTime = 250;
+        long waitParseTime = 500;
 
         long startWaitTime = System.currentTimeMillis();
 
@@ -22,26 +19,14 @@ public class RCCarMain {
             if(System.currentTimeMillis() - startWaitTime < waitParseTime ) {
                 System.out.println("Updating!");
                 imgCreator.parseImage();
-                startWaitTime = System.currentTimeMillis();
-            }
+                 aws.test();
 
+                startWaitTime = System.currentTimeMillis();
+
+            }
         }
     }
 
-=======
 
-
-
-
-public class RCCarMain {
-    // Instantiates a client
-    public static void main(String[] args) throws Exception
-    {
-
-
-    }
-
-
->>>>>>> googlevisionAPI
 }
 

@@ -2,12 +2,8 @@ package Main;
 
 import com.amazonaws.services.rekognition.AmazonRekognition;
 import com.amazonaws.services.rekognition.AmazonRekognitionClientBuilder;
-import com.amazonaws.services.rekognition.model.Image;
-import com.amazonaws.services.rekognition.model.BoundingBox;
-import com.amazonaws.services.rekognition.model.CompareFacesMatch;
-import com.amazonaws.services.rekognition.model.CompareFacesRequest;
-import com.amazonaws.services.rekognition.model.CompareFacesResult;
-import com.amazonaws.services.rekognition.model.ComparedFace;
+import com.amazonaws.services.rekognition.model.*;
+
 import java.util.List;
 import java.io.File;
 import java.io.FileInputStream;
@@ -17,10 +13,13 @@ import com.amazonaws.util.IOUtils;
 
 public class RekognitionCompareFaces {
 
-    public static void main(String[] args) throws Exception{
-        Float similarityThreshold = 70F;
-        String sourceImage = "source.jpg";
-        String targetImage = "target.jpg";
+    static boolean worked = false;
+    static List<Landmark> landmarkList;
+
+    public ComparedFace test() throws Exception{
+        Float similarityThreshold = 50F;
+        String sourceImage = "src/main/java/Resources/SourcePerson.png";
+        String targetImage = "src/main/java/Resources/rcCarView.png";
         ByteBuffer sourceImageBytes=null;
         ByteBuffer targetImageBytes=null;
 
@@ -43,7 +42,7 @@ public class RekognitionCompareFaces {
             System.out.println("Failed to load target images: " + targetImage);
             System.exit(1);
         }
-
+        worked = true;
         Image source=new Image()
                 .withBytes(sourceImageBytes);
         Image target=new Image()
@@ -57,12 +56,13 @@ public class RekognitionCompareFaces {
         // Call operation
         CompareFacesResult compareFacesResult=rekognitionClient.compareFaces(request);
 
-
         // Display results
         List <CompareFacesMatch> faceDetails = compareFacesResult.getFaceMatches();
+        ComparedFace face = null;
         for (CompareFacesMatch match: faceDetails){
-            ComparedFace face= match.getFace();
+            face= match.getFace();
             BoundingBox position = face.getBoundingBox();
+
             System.out.println("Face at " + position.getLeft().toString()
                     + " " + position.getTop()
                     + " matches with " + face.getConfidence().toString()
@@ -75,5 +75,6 @@ public class RekognitionCompareFaces {
                 + " face(s) that did not match");
         System.out.println("Source image rotation: " + compareFacesResult.getSourceImageOrientationCorrection());
         System.out.println("target image rotation: " + compareFacesResult.getTargetImageOrientationCorrection());
+        return face;
     }
 }
