@@ -12,7 +12,7 @@ public class CommandGeneration {
     float magCompX;
     float magCompY;
 
-    public static void getFace(ComparedFace face){
+    public  void getFace(ComparedFace face){
         if(face == null)
             return;
 
@@ -23,8 +23,29 @@ public class CommandGeneration {
         float xActual = nose.getX();
         float yActual = nose.getY();
 
-        float targetX = (float) .5, targetY = .5f;
+        float xTarget = (float) .5, targetY = .5f;
+        float xThreshhold = ;
+        float yThreshhold = ;
 
+        if(Math.abs(xTarget - xActual) < xThreshhold) {
+            xCompDir = 'N';
+        }
+        else if(xActual > xTarget) {
+            xCompDir = 'R';
+        }
+        else if(xActual < xTarget) {
+            xCompDir = 'L';
+        }
 
-    }
+        if(Math.abs(targetY - yActual) < yThreshhold) {
+            yCompDir = 'N';
+        }
+        else if(targetY < yActual) {
+            yCompDir = 'B';
+        }
+        else if(targetY > yActual) {
+            yCompDir = 'F';
+        }
+    //speed: 0-90 is reverse, 90-180 is fowards
+    //steering: between 145 and 35, angles?
 }
