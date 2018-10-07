@@ -8,6 +8,9 @@ public class RCCarMain {
         ImageCreator imgCreator = new ImageCreator();
         imgCreator.initCameraStream();
         RekognitionCompareFaces aws = new RekognitionCompareFaces();
+        SendCommandCar cmdHandler = new SendCommandCar();
+        cmdHandler.initComInterface();
+
 
 
         long waitParseTime = 500;
